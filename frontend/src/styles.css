@@ -1,4 +1,4 @@
-@import "tailwindcss" source(none);
+﻿@import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
 
@@ -50,64 +50,64 @@
 :root {
   --radius: 0.875rem;
 
-  /* ── BrushPack 2.0 — teal-green + amber on light slate ── */
+  /* â”€â”€ BrushPack 2.0 â€” teal-green + amber on light slate â”€â”€ */
 
   /* App background: clean light slate-blue */
-  --background: #f0f4f8;
-  --foreground: #1a202c;
+  --background: #a0aecd;
+  --foreground: #000000;
 
   /* Cards: pure white */
   --card: #ffffff;
-  --card-foreground: #1a202c;
+  --card-foreground: #000000;
   --popover: #ffffff;
-  --popover-foreground: #1a202c;
+  --popover-foreground: #000000;
 
-  /* Primary: rich teal */
-  --primary: #0d7377;
+  /* Primary buttons */
+  --primary: #000000;
   --primary-foreground: #ffffff;
 
   /* Secondary: soft slate */
-  --secondary: #e8edf3;
-  --secondary-foreground: #2d3748;
+  --secondary: #ffffff;
+  --secondary-foreground: #000000;
 
   /* Muted */
   --muted: #edf2f7;
-  --muted-foreground: #718096;
+  --muted-foreground: #000000;
 
   /* Accent: warm amber */
-  --accent: #d97706;
+  --accent: #000000;
   --accent-foreground: #ffffff;
 
   --destructive: #e53e3e;
   --destructive-foreground: #ffffff;
 
-  --border: #cbd5e0;
-  --input: #cbd5e0;
-  --ring: #0d7377;
+  --border: #6b5ca5;
+  --input: #6b5ca5;
+  --ring: #000000;
 
-  --chart-1: #0d7377;
-  --chart-2: #d97706;
+  --chart-1: #6b5ca5;
+  --chart-2: #000000;
   --chart-3: #3182ce;
   --chart-4: #38a169;
   --chart-5: #805ad5;
 
   /* Sidebar: dark slate */
-  --sidebar: #1a202c;
-  --sidebar-foreground: #e2e8f0;
-  --sidebar-primary: #14b8a6;
+  --sidebar: #6b5ca5;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #ffffff;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #2d3748;
-  --sidebar-accent-foreground: #e2e8f0;
-  --sidebar-border: #2d3748;
-  --sidebar-ring: #14b8a6;
+  --sidebar-accent: #6b5ca5;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #6b5ca5;
+  --sidebar-ring: #6b5ca5;
 
   /* Login page: single solid deep navy */
   --login-bg: #0f2027;
 
   /* Gradients & shadows */
-  --gradient-hero:   linear-gradient(135deg, #0d7377 0%, #14b8a6 100%);
-  --gradient-warm:   linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
-  --gradient-soft:   #f0f4f8;
+  --gradient-hero:   linear-gradient(135deg, #6b5ca5 0%, #6b5ca5 100%);
+  --gradient-warm:   linear-gradient(135deg, #000000 0%, #000000 100%);
+  --gradient-soft:   #a0aecd;
   --shadow-soft:     0 4px 20px -6px rgba(13,115,119,0.20);
   --shadow-elegant:  0 20px 50px -16px rgba(13,115,119,0.30);
 }
@@ -119,25 +119,25 @@
   --card-foreground: #f1f5f9;
   --popover: #1e293b;
   --popover-foreground: #f1f5f9;
-  --primary: #14b8a6;
+  --primary: #6b5ca5;
   --primary-foreground: #0f172a;
   --secondary: #334155;
   --secondary-foreground: #f1f5f9;
   --muted: #334155;
   --muted-foreground: #94a3b8;
-  --accent: #f59e0b;
+  --accent: #000000;
   --accent-foreground: #0f172a;
   --border: rgba(255,255,255,0.1);
   --input: rgba(255,255,255,0.12);
-  --ring: #14b8a6;
+  --ring: #6b5ca5;
   --sidebar: #0f172a;
   --sidebar-foreground: #f1f5f9;
-  --sidebar-primary: #14b8a6;
+  --sidebar-primary: #6b5ca5;
   --sidebar-primary-foreground: #0f172a;
   --sidebar-accent: #1e293b;
   --sidebar-accent-foreground: #f1f5f9;
   --sidebar-border: rgba(255,255,255,0.08);
-  --sidebar-ring: #14b8a6;
+  --sidebar-ring: #6b5ca5;
 }
 
 @layer base {
@@ -147,14 +147,14 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
-  /* ── Always-visible text cursor + caret in every input / textarea / select ── */
+  /* â”€â”€ Always-visible text cursor + caret in every input / textarea / select â”€â”€ */
   input, textarea, select {
-    caret-color: #0d7377 !important;
+    caret-color: #6b5ca5 !important;
     cursor: text !important;
   }
   /* Ensure caret is never invisible (some Tailwind resets can hide it) */
   input:focus, textarea:focus {
-    caret-color: #0d7377 !important;
+    caret-color: #6b5ca5 !important;
     cursor: text !important;
   }
   /* Preserve pointer cursor on buttons even while typing nearby */
@@ -167,7 +167,7 @@
 @layer utilities {
   .bg-hero { background: var(--gradient-hero); }
   .bg-warm { background: var(--gradient-warm); }
-  /* login page — single solid deep navy, no gradients */
+  /* login page â€” single solid deep navy, no gradients */
   .bg-soft { background-color: var(--login-bg); }
   .shadow-soft { box-shadow: var(--shadow-soft); }
   .shadow-elegant { box-shadow: var(--shadow-elegant); }
@@ -209,3 +209,4 @@
     animation: shimmer 3.5s linear infinite;
   }
 }
+

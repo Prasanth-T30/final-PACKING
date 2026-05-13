@@ -1,4 +1,4 @@
-// PageHelpers.jsx — shared UI primitives (converted from TSX to JSX)
+﻿// PageHelpers.jsx â€” shared UI primitives (converted from TSX to JSX)
 
 export function Section({ title, action, children }) {
   return (
@@ -33,7 +33,7 @@ export function Field({ label, children }) {
 
 export const inputCls =
   "w-full rounded-lg border border-input bg-card px-3.5 py-2.5 text-sm outline-none focus:ring-2 focus:ring-ring/40 focus:border-ring transition"
-  + " [caret-color:#0d7377]";
+  + " [caret-color:#6b5ca5]";
 
 export function Btn({ children, variant = "primary", className = "", ...props }) {
   const variants = {
@@ -68,3 +68,4 @@ export function Pill({ children, tone = "default" }) {
     </span>
   );
 }
+

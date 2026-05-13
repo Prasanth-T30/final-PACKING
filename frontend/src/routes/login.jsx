@@ -1,4 +1,4 @@
-// login.jsx — Sign-in + Create User with warehouse slideshow background
+﻿// login.jsx â€” Sign-in + Create User with warehouse slideshow background
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { Eye, EyeOff, Loader2, Package, UserPlus, LogIn } from "lucide-react";
@@ -7,7 +7,7 @@ import { userStore, sessionStore } from "@/lib/store";
 export const Route = createFileRoute("/login")({
   head: () => ({
     meta: [
-      { title: "Sign in — BrushPack" },
+      { title: "Sign in â€” BrushPack" },
       { name: "description", content: "Manager login for BrushPack packaging operations." },
     ],
   }),
@@ -25,12 +25,12 @@ const SLIDES = [
 const INTERVAL_MS = 5000;
 const FADE_MS     = 1000;
 
-/* ── Shared input style ── */
+/* â”€â”€ Shared input style â”€â”€ */
 const inputStyle = {
-  border: "1.5px solid #cbd5e0",
-  backgroundColor: "#f7fafc",
-  color: "#1a202c",
-  caretColor: "#0d7377",
+  border: "1.5px solid #6b5ca5",
+  backgroundColor: "#ffffff",
+  color: "#000000",
+  caretColor: "#6b5ca5",
   cursor: "text",
 };
 
@@ -71,7 +71,7 @@ function LoginPage() {
 
   const nextIdx = (idx + 1) % SLIDES.length;
 
-  /* ── Sign In submit ── */
+  /* â”€â”€ Sign In submit â”€â”€ */
   const submitSignIn = (e) => {
     e.preventDefault();
     setSiError("");
@@ -90,7 +90,7 @@ function LoginPage() {
     }, 500);
   };
 
-  /* ── Create User submit ── */
+  /* â”€â”€ Create User submit â”€â”€ */
   const submitCreate = (e) => {
     e.preventDefault();
     setCuError(""); setCuOk("");
@@ -117,7 +117,7 @@ function LoginPage() {
     }, 400);
   };
 
-  /* ── Tab button ── */
+  /* â”€â”€ Tab button â”€â”€ */
   function TabBtn({ id, icon: Icon, label }) {
     const active = tab === id;
     return (
@@ -132,8 +132,8 @@ function LoginPage() {
           cursor: "pointer",
           fontWeight: active ? 600 : 400,
           fontSize: "13px",
-          backgroundColor: active ? "#0d7377" : "transparent",
-          color: active ? "#ffffff" : "#718096",
+          backgroundColor: active ? "#000000" : "transparent",
+          color: active ? "#ffffff" : "#000000",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -160,7 +160,7 @@ function LoginPage() {
       {/* Slide dots */}
       <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2" style={{ zIndex: 3 }}>
         {SLIDES.map((_, i) => (
-          <button key={i} onClick={() => setIdx(i)} aria-label={`Slide ${i + 1}`} style={{ width: i === idx ? "22px" : "8px", height: "8px", borderRadius: "9999px", border: "none", backgroundColor: i === idx ? "#0d7377" : "rgba(255,255,255,0.45)", transition: "width 0.3s ease, background-color 0.3s ease", cursor: "pointer", padding: 0 }} />
+          <button key={i} onClick={() => setIdx(i)} aria-label={`Slide ${i + 1}`} style={{ width: i === idx ? "22px" : "8px", height: "8px", borderRadius: "9999px", border: "none", backgroundColor: i === idx ? "#000000" : "rgba(255,255,255,0.45)", transition: "width 0.3s ease, background-color 0.3s ease", cursor: "pointer", padding: 0 }} />
         ))}
       </div>
 
@@ -170,20 +170,20 @@ function LoginPage() {
 
           {/* Brand */}
           <div className="flex flex-col items-center text-center mb-6">
-            <div className="h-14 w-14 sm:h-16 sm:w-16 rounded-2xl grid place-items-center animate-float" style={{ backgroundColor: "#0d7377" }}>
+            <div className="h-14 w-14 sm:h-16 sm:w-16 rounded-2xl grid place-items-center animate-float" style={{ backgroundColor: "#000000" }}>
               <Package className="h-7 w-7 sm:h-8 sm:w-8 text-white" strokeWidth={2.2} />
             </div>
-            <h1 className="mt-4 font-display text-2xl sm:text-3xl tracking-tight" style={{ color: "#1a202c" }}>BrushPack</h1>
-            <p className="text-sm mt-1" style={{ color: "#718096" }}>Packaging Operations Portal</p>
+            <h1 className="mt-4 font-display text-2xl sm:text-3xl tracking-tight" style={{ color: "#000000" }}>BrushPack</h1>
+            <p className="text-sm mt-1" style={{ color: "#000000" }}>Packaging Operations Portal</p>
           </div>
 
           {/* Tabs */}
-          <div className="flex gap-1 mb-6 p-1 rounded-xl" style={{ backgroundColor: "#e8edf3", border: "1px solid #cbd5e0" }}>
+          <div className="flex gap-1 mb-6 p-1 rounded-xl" style={{ backgroundColor: "#ffffff", border: "1px solid #6b5ca5" }}>
             <TabBtn id="signin" icon={LogIn}    label="Sign In"      />
             <TabBtn id="create" icon={UserPlus} label="Create User"  />
           </div>
 
-          {/* ── SIGN IN FORM ── */}
+          {/* â”€â”€ SIGN IN FORM â”€â”€ */}
           {tab === "signin" && (
             <form onSubmit={submitSignIn} className="space-y-4 sm:space-y-5">
               {siError && (
@@ -193,7 +193,7 @@ function LoginPage() {
               )}
 
               <div>
-                <label className="block text-sm font-semibold mb-2" style={{ color: "#2d3748" }}>Username</label>
+                <label className="block text-sm font-semibold mb-2" style={{ color: "#000000" }}>Username</label>
                 <input
                   value={siUser}
                   onChange={(e) => setSiUser(e.target.value)}
@@ -202,13 +202,13 @@ function LoginPage() {
                   placeholder="Enter username"
                   className="w-full rounded-xl px-4 py-2.5 sm:py-3 text-sm outline-none transition"
                   style={inputStyle}
-                  onFocus={(e) => (e.target.style.borderColor = "#0d7377")}
-                  onBlur={(e)  => (e.target.style.borderColor = "#cbd5e0")}
+                  onFocus={(e) => (e.target.style.borderColor = "#000000")}
+                  onBlur={(e)  => (e.target.style.borderColor = "#000000")}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2" style={{ color: "#2d3748" }}>Password</label>
+                <label className="block text-sm font-semibold mb-2" style={{ color: "#000000" }}>Password</label>
                 <div className="relative">
                   <input
                     type={siShowP ? "text" : "password"}
@@ -216,29 +216,29 @@ function LoginPage() {
                     onChange={(e) => setSiPass(e.target.value)}
                     required
                     autoComplete="current-password"
-                    placeholder="••••••••"
+                    placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                     className="w-full rounded-xl px-4 py-2.5 sm:py-3 pr-11 text-sm outline-none transition"
                     style={inputStyle}
-                    onFocus={(e) => (e.target.style.borderColor = "#0d7377")}
-                    onBlur={(e)  => (e.target.style.borderColor = "#cbd5e0")}
+                    onFocus={(e) => (e.target.style.borderColor = "#000000")}
+                    onBlur={(e)  => (e.target.style.borderColor = "#000000")}
                   />
-                  <button type="button" onClick={() => setSiShowP((s) => !s)} className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded" style={{ color: "#a0aec0", cursor: "pointer" }} aria-label={siShowP ? "Hide" : "Show"}>
+                  <button type="button" onClick={() => setSiShowP((s) => !s)} className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded" style={{ color: "#000000", cursor: "pointer" }} aria-label={siShowP ? "Hide" : "Show"}>
                     {siShowP ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
                 </div>
-                <p className="text-xs mt-1.5" style={{ color: "#a0aec0" }}>
+                <p className="text-xs mt-1.5" style={{ color: "#000000" }}>
                   Default: username <strong>manager</strong> / password <strong>brushpack2024</strong>
                 </p>
               </div>
 
-              <button type="submit" disabled={siLoading} className="w-full rounded-xl py-2.5 sm:py-3 text-sm font-semibold flex items-center justify-center gap-2 transition-all" style={{ backgroundColor: siLoading ? "#a0aec0" : "#0d7377", color: "#ffffff", cursor: siLoading ? "not-allowed" : "pointer", boxShadow: siLoading ? "none" : "0 4px 16px rgba(13,115,119,0.4)" }}>
+              <button type="submit" disabled={siLoading} className="w-full rounded-xl py-2.5 sm:py-3 text-sm font-semibold flex items-center justify-center gap-2 transition-all" style={{ backgroundColor: "#000000", color: "#ffffff", cursor: siLoading ? "not-allowed" : "pointer", boxShadow: siLoading ? "none" : "0 4px 16px rgba(0,0,0,0.35)" }}>
                 {siLoading && <Loader2 className="h-4 w-4 animate-spin" />}
-                {siLoading ? "Signing in…" : "Sign In"}
+                {siLoading ? "Signing inâ€¦" : "Sign In"}
               </button>
             </form>
           )}
 
-          {/* ── CREATE USER FORM ── */}
+          {/* â”€â”€ CREATE USER FORM â”€â”€ */}
           {tab === "create" && (
             <form onSubmit={submitCreate} className="space-y-4">
               {cuError && (
@@ -253,7 +253,7 @@ function LoginPage() {
               )}
 
               <div>
-                <label className="block text-sm font-semibold mb-2" style={{ color: "#2d3748" }}>Username</label>
+                <label className="block text-sm font-semibold mb-2" style={{ color: "#000000" }}>Username</label>
                 <input
                   value={cuUser}
                   onChange={(e) => setCuUser(e.target.value)}
@@ -262,20 +262,20 @@ function LoginPage() {
                   placeholder="Choose a username"
                   className="w-full rounded-xl px-4 py-2.5 text-sm outline-none transition"
                   style={inputStyle}
-                  onFocus={(e) => (e.target.style.borderColor = "#0d7377")}
-                  onBlur={(e)  => (e.target.style.borderColor = "#cbd5e0")}
+                  onFocus={(e) => (e.target.style.borderColor = "#000000")}
+                  onBlur={(e)  => (e.target.style.borderColor = "#000000")}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2" style={{ color: "#2d3748" }}>Role</label>
+                <label className="block text-sm font-semibold mb-2" style={{ color: "#000000" }}>Role</label>
                 <select
                   value={cuRole}
                   onChange={(e) => setCuRole(e.target.value)}
                   className="w-full rounded-xl px-4 py-2.5 text-sm outline-none transition"
                   style={{ ...inputStyle, cursor: "default" }}
-                  onFocus={(e) => (e.target.style.borderColor = "#0d7377")}
-                  onBlur={(e)  => (e.target.style.borderColor = "#cbd5e0")}
+                  onFocus={(e) => (e.target.style.borderColor = "#000000")}
+                  onBlur={(e)  => (e.target.style.borderColor = "#000000")}
                 >
                   {["Operations Manager","Supervisor","Packer","QC Inspector","Loader","Staff"].map((r) => (
                     <option key={r} value={r}>{r}</option>
@@ -284,7 +284,7 @@ function LoginPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2" style={{ color: "#2d3748" }}>Password</label>
+                <label className="block text-sm font-semibold mb-2" style={{ color: "#000000" }}>Password</label>
                 <div className="relative">
                   <input
                     type={cuShowP ? "text" : "password"}
@@ -295,17 +295,17 @@ function LoginPage() {
                     placeholder="Min. 6 characters"
                     className="w-full rounded-xl px-4 py-2.5 pr-11 text-sm outline-none transition"
                     style={inputStyle}
-                    onFocus={(e) => (e.target.style.borderColor = "#0d7377")}
-                    onBlur={(e)  => (e.target.style.borderColor = "#cbd5e0")}
+                    onFocus={(e) => (e.target.style.borderColor = "#000000")}
+                    onBlur={(e)  => (e.target.style.borderColor = "#000000")}
                   />
-                  <button type="button" onClick={() => setCuShowP((s) => !s)} className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded" style={{ color: "#a0aec0", cursor: "pointer" }}>
+                  <button type="button" onClick={() => setCuShowP((s) => !s)} className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded" style={{ color: "#000000", cursor: "pointer" }}>
                     {cuShowP ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2" style={{ color: "#2d3748" }}>Confirm Password</label>
+                <label className="block text-sm font-semibold mb-2" style={{ color: "#000000" }}>Confirm Password</label>
                 <div className="relative">
                   <input
                     type={cuShowC ? "text" : "password"}
@@ -316,27 +316,28 @@ function LoginPage() {
                     placeholder="Re-enter password"
                     className="w-full rounded-xl px-4 py-2.5 pr-11 text-sm outline-none transition"
                     style={inputStyle}
-                    onFocus={(e) => (e.target.style.borderColor = "#0d7377")}
-                    onBlur={(e)  => (e.target.style.borderColor = "#cbd5e0")}
+                    onFocus={(e) => (e.target.style.borderColor = "#000000")}
+                    onBlur={(e)  => (e.target.style.borderColor = "#000000")}
                   />
-                  <button type="button" onClick={() => setCuShowC((s) => !s)} className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded" style={{ color: "#a0aec0", cursor: "pointer" }}>
+                  <button type="button" onClick={() => setCuShowC((s) => !s)} className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded" style={{ color: "#000000", cursor: "pointer" }}>
                     {cuShowC ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
                 </div>
               </div>
 
-              <button type="submit" disabled={cuLoading} className="w-full rounded-xl py-2.5 sm:py-3 text-sm font-semibold flex items-center justify-center gap-2 transition-all" style={{ backgroundColor: cuLoading ? "#a0aec0" : "#0d7377", color: "#ffffff", cursor: cuLoading ? "not-allowed" : "pointer", boxShadow: cuLoading ? "none" : "0 4px 16px rgba(13,115,119,0.4)" }}>
+              <button type="submit" disabled={cuLoading} className="w-full rounded-xl py-2.5 sm:py-3 text-sm font-semibold flex items-center justify-center gap-2 transition-all" style={{ backgroundColor: "#000000", color: "#ffffff", cursor: cuLoading ? "not-allowed" : "pointer", boxShadow: cuLoading ? "none" : "0 4px 16px rgba(0,0,0,0.35)" }}>
                 {cuLoading && <Loader2 className="h-4 w-4 animate-spin" />}
-                {cuLoading ? "Creating…" : "Create User"}
+                {cuLoading ? "Creatingâ€¦" : "Create User"}
               </button>
             </form>
           )}
 
-          <p className="text-xs text-center mt-6" style={{ color: "#a0aec0" }}>
-            BrushPack Packaging Operations · Manager Portal
+          <p className="text-xs text-center mt-6" style={{ color: "#000000" }}>
+            BrushPack Packaging Operations Â· Manager Portal
           </p>
         </div>
       </div>
     </div>
   );
 }
+

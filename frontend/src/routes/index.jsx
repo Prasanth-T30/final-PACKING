@@ -1,6 +1,7 @@
-// index.jsx — Dashboard (converted from TSX to JSX)
+﻿// index.jsx â€” Dashboard (converted from TSX to JSX)
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { DashboardLayout } from "@/components/DashboardLayout";
+import { billingStore } from "@/lib/store";
 import {
   PackageCheck, Activity, LineChart, UserCog, Users,
   ReceiptText, FileText, Boxes, AlertTriangle, ArrowUpRight, TrendingUp,
@@ -13,7 +14,7 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Dashboard — BrushPack" },
+      { title: "Dashboard â€” BrushPack" },
       { name: "description", content: "Overview of packing production, workforce, billing and materials." },
     ],
   }),
@@ -72,17 +73,26 @@ const trend = [
 ];
 
 function Dashboard() {
+  const bills = billingStore.getAll();
+  const pendingBills = bills.filter((b) => b.status === "Pending");
+  const pendingBillValue = pendingBills.reduce((sum, b) => sum + (Number(b.value) || 0), 0);
+
   return (
     <DashboardLayout
       title="Good morning, Manager"
       subtitle="Here's what's moving through the packing floor today."
     >
-      {/* ── KPI Cards ── */}
+      {/* â”€â”€ KPI Cards â”€â”€ */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
         {[
           { label: "Units Packed Today", value: "11,100", trend: "+9.2%",         tone: "text-emerald-600" },
           { label: "Workers Present",    value: "92 / 96", trend: "+4 vs yesterday", tone: "text-emerald-600" },
-          { label: "Pending Bills",      value: "₹3.8L",   trend: "7 invoices",    tone: "text-muted-foreground" },
+          {
+            label: "Pending Bills",
+            value: `${pendingBillValue.toLocaleString("en-IN")}`,
+            trend: `${pendingBills.length} invoices`,
+            tone: "text-muted-foreground",
+          },
           { label: "Low Stock Items",    value: "4",        trend: "Reorder soon",  tone: "text-accent" },
         ].map((k, i) => (
           <div
@@ -103,7 +113,7 @@ function Dashboard() {
         ))}
       </div>
 
-      {/* ── Modules ── */}
+      {/* â”€â”€ Modules â”€â”€ */}
       <div className="mb-3 sm:mb-4">
         <h2 className="font-display text-xl sm:text-2xl">Modules</h2>
         <p className="text-sm text-muted-foreground">Everything you need to run the packing floor.</p>
@@ -142,7 +152,7 @@ function Dashboard() {
         ))}
       </div>
 
-      {/* ── Chart + Activity ── */}
+      {/* â”€â”€ Chart + Activity â”€â”€ */}
       <div className="grid lg:grid-cols-3 gap-4 sm:gap-6">
         <div className="lg:col-span-2 rounded-2xl bg-card border border-border p-4 sm:p-6 shadow-soft hover-lift">
           <div className="flex items-start justify-between mb-3 gap-2">
@@ -159,15 +169,15 @@ function Dashboard() {
               <AreaChart data={trend} margin={{ top: 5, right: 5, left: -20, bottom: 0 }}>
                 <defs>
                   <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%"   stopColor="#0d7377" stopOpacity={0.5} />
-                    <stop offset="100%" stopColor="#0d7377" stopOpacity={0}   />
+                    <stop offset="0%"   stopColor="#6b5ca5" stopOpacity={0.5} />
+                    <stop offset="100%" stopColor="#6b5ca5" stopOpacity={0}   />
                   </linearGradient>
                 </defs>
-                <CartesianGrid stroke="#e2e8f0" strokeDasharray="3 3" vertical={false} />
+                <CartesianGrid stroke="#ffffff" strokeDasharray="3 3" vertical={false} />
                 <XAxis dataKey="d" tickLine={false} axisLine={false} tick={{ fontSize: 11 }} />
                 <YAxis tickLine={false} axisLine={false} tick={{ fontSize: 11 }} />
                 <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid oklch(0.92 0.012 260)", fontSize: 12 }} />
-                <Area type="monotone" dataKey="v" stroke="#0d7377" strokeWidth={2.5} fill="url(#g1)" animationDuration={1200} />
+                <Area type="monotone" dataKey="v" stroke="#6b5ca5" strokeWidth={2.5} fill="url(#g1)" animationDuration={1200} />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -177,10 +187,10 @@ function Dashboard() {
           <h3 className="font-display text-base sm:text-lg mb-4">Recent Activity</h3>
           <ul className="space-y-3 sm:space-y-4">
             {[
-              ["Order PK-2381 — 2,400 units packed",       "12 min ago", "bg-primary"    ],
+              ["Order PK-2381 â€” 2,400 units packed",       "12 min ago", "bg-primary"    ],
               ["Salary processed for 22 daily workers",    "1 hr ago",   "bg-accent"     ],
               ["Quotation Q-104 sent to BrightBrush Co.",  "3 hr ago",   "bg-primary"    ],
-              ["Cardboard sleeves — running low",          "Today",      "bg-destructive"],
+              ["Cardboard sleeves â€” running low",          "Today",      "bg-destructive"],
             ].map(([t, w, c], i) => (
               <li key={t} style={{ animationDelay: `${i * 90}ms` }} className="animate-fade-in flex gap-3">
                 <span className={`mt-1.5 h-2 w-2 rounded-full ${c} animate-pulse shrink-0`} />
@@ -196,3 +206,4 @@ function Dashboard() {
     </DashboardLayout>
   );
 }
+

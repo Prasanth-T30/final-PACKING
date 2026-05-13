@@ -1,4 +1,4 @@
-// DashboardLayout.jsx — main shell with new teal + dark-slate colour scheme
+﻿// DashboardLayout.jsx â€” main shell with new teal + dark-slate colour scheme
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import {
@@ -44,21 +44,21 @@ const groups = [
   },
 ];
 
-/* ── colour tokens (must match CSS variables set in styles.css) ── */
+/* â”€â”€ colour tokens (must match CSS variables set in styles.css) â”€â”€ */
 const C = {
-  sidebar:        "#1a202c",   // dark slate
-  sidebarBorder:  "#2d3748",
-  sidebarText:    "#e2e8f0",
-  sidebarMuted:   "#718096",
-  activeItem:     "#0d7377",   // teal primary
+  sidebar:        "#6b5ca5",   // left sidebar color
+  sidebarBorder:  "#6b5ca5",
+  sidebarText:    "#ffffff",
+  sidebarMuted:   "rgba(255,255,255,0.9)",
+  activeItem:     "#6b5ca5",   // teal primary
   activeText:     "#ffffff",
-  hoverItem:      "#2d3748",
-  appBg:          "#f0f4f8",   // light slate-blue
+  hoverItem:      "rgba(255,255,255,0.18)",
+  appBg:          "#a0aecd",   // light slate-blue
   headerBg:       "rgba(240,244,248,0.90)",
-  accent:         "#d97706",   // amber
+  accent:         "#000000",   // amber
 };
 
-/* ── Profile stored in localStorage ── */
+/* â”€â”€ Profile stored in localStorage â”€â”€ */
 const PROFILE_KEY = "bp_profile";
 function loadProfile() {
   try {
@@ -132,7 +132,7 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
   return (
     <div className="min-h-screen flex" style={{ backgroundColor: C.appBg }}>
 
-      {/* ══════════════ SIDEBAR ══════════════ */}
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â• SIDEBAR â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <aside
         className={`fixed lg:sticky top-0 left-0 z-40 h-screen w-64 xl:w-72 flex flex-col transition-transform duration-300 ${
           open ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
@@ -261,16 +261,16 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
         />
       )}
 
-      {/* ══════════════ MAIN AREA ══════════════ */}
+      {/* â•â•â•â•â•â•â•â•â•â•â•â•â•â• MAIN AREA â•â•â•â•â•â•â•â•â•â•â•â•â•â• */}
       <main className="flex-1 min-w-0 flex flex-col">
 
-        {/* ── Top Header ── */}
+        {/* â”€â”€ Top Header â”€â”€ */}
         <header
           className="sticky top-0 z-20 shrink-0"
           style={{
             backgroundColor: C.headerBg,
             backdropFilter: "blur(12px)",
-            borderBottom: "1px solid #cbd5e0",
+            borderBottom: "1px solid #6b5ca5",
           }}
         >
           <div className="flex items-center gap-2 sm:gap-3 px-4 sm:px-6 lg:px-8 py-3">
@@ -288,12 +288,12 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
             <div className="flex-1 min-w-0">
               <h1
                 className="font-display text-lg sm:text-xl lg:text-2xl truncate font-semibold"
-                style={{ color: "#1a202c" }}
+                style={{ color: "#000000" }}
               >
                 {title}
               </h1>
               {subtitle && (
-                <p className="text-xs sm:text-sm mt-0.5 truncate hidden sm:block" style={{ color: "#718096" }}>
+                <p className="text-xs sm:text-sm mt-0.5 truncate hidden sm:block" style={{ color: "#000000" }}>
                   {subtitle}
                 </p>
               )}
@@ -302,13 +302,13 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
             {/* Search */}
             <div
               className="hidden md:flex items-center gap-2 px-3 py-2 rounded-lg w-48 lg:w-60 xl:w-72"
-              style={{ backgroundColor: "#ffffff", border: "1px solid #cbd5e0" }}
+              style={{ backgroundColor: "#ffffff", border: "1px solid #6b5ca5" }}
             >
-              <Search className="h-4 w-4 shrink-0" style={{ color: "#a0aec0" }} />
+              <Search className="h-4 w-4 shrink-0" style={{ color: "#000000" }} />
               <input
-                placeholder="Search…"
+                placeholder="Searchâ€¦"
                 className="bg-transparent outline-none text-sm w-full"
-                style={{ color: "#1a202c", caretColor: "#0d7377" }}
+                style={{ color: "#000000", caretColor: "#6b5ca5" }}
               />
             </div>
 
@@ -317,7 +317,7 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
               <button
                 onClick={() => setNotiOpen((s) => !s)}
                 className="relative p-2 rounded-lg transition-colors"
-                style={{ color: "#718096" }}
+                style={{ color: "#000000" }}
                 aria-label="Notifications"
               >
                 <Bell className="h-5 w-5" />
@@ -338,20 +338,20 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
                     className="absolute right-0 top-full mt-2 w-72 sm:w-80 rounded-xl z-50 animate-fade-in overflow-hidden"
                     style={{
                       backgroundColor: "#ffffff",
-                      border: "1px solid #e2e8f0",
+                      border: "1px solid #ffffff",
                       boxShadow: "0 16px 48px rgba(0,0,0,0.16)",
                     }}
                   >
                     <div
                       className="p-4 flex items-center justify-between"
-                      style={{ borderBottom: "1px solid #e2e8f0" }}
+                      style={{ borderBottom: "1px solid #ffffff" }}
                     >
-                      <div className="font-semibold text-sm flex items-center gap-2" style={{ color: "#1a202c" }}>
+                      <div className="font-semibold text-sm flex items-center gap-2" style={{ color: "#000000" }}>
                         <AlertCircle className="h-4 w-4" style={{ color: C.accent }} />
                         Low Stock Alerts
                       </div>
                       {notifications.length > 0 && (
-                        <button onClick={clearAll} className="text-xs" style={{ color: "#718096" }}>
+                        <button onClick={clearAll} className="text-xs" style={{ color: "#000000" }}>
                           Clear all
                         </button>
                       )}
@@ -359,27 +359,27 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
 
                     <div className="max-h-72 overflow-y-auto">
                       {notifications.length === 0 ? (
-                        <div className="p-4 text-center text-sm" style={{ color: "#718096" }}>No alerts</div>
+                        <div className="p-4 text-center text-sm" style={{ color: "#000000" }}>No alerts</div>
                       ) : notifications.map((n) => (
                         <div
                           key={n.id}
                           className="p-3 transition-colors"
-                          style={{ borderBottom: "1px solid #f7fafc" }}
+                          style={{ borderBottom: "1px solid #ffffff" }}
                         >
                           <div className="flex items-start justify-between gap-2">
                             <div className="flex-1 min-w-0">
-                              <div className="font-medium text-sm truncate" style={{ color: "#1a202c" }}>{n.name}</div>
+                              <div className="font-medium text-sm truncate" style={{ color: "#000000" }}>{n.name}</div>
                               <div className="text-xs mt-0.5" style={{ color: "#e53e3e" }}>
                                 {n.qty?.toLocaleString()} {n.unit} / {n.min?.toLocaleString()} min
                               </div>
-                              <div className="text-xs mt-0.5" style={{ color: "#a0aec0" }}>{n.timestamp}</div>
+                              <div className="text-xs mt-0.5" style={{ color: "#000000" }}>{n.timestamp}</div>
                             </div>
                             <button
                               onClick={() => clearNotif(n.id)}
                               className="text-lg leading-none mt-0.5"
-                              style={{ color: "#a0aec0" }}
+                              style={{ color: "#000000" }}
                             >
-                              ×
+                              Ã—
                             </button>
                           </div>
                         </div>
@@ -387,14 +387,14 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
                     </div>
 
                     {notifications.length > 0 && (
-                      <div className="p-3" style={{ borderTop: "1px solid #e2e8f0", backgroundColor: "#f7fafc" }}>
+                      <div className="p-3" style={{ borderTop: "1px solid #ffffff", backgroundColor: "#ffffff" }}>
                         <Link
                           to="/inventory/alerts"
                           onClick={() => setNotiOpen(false)}
                           className="text-sm font-medium"
                           style={{ color: C.activeItem }}
                         >
-                          View all alerts →
+                          View all alerts â†’
                         </Link>
                       </div>
                     )}
@@ -403,13 +403,13 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
               )}
             </div>
 
-            {/* ── Profile avatar + dropdown ── */}
+            {/* â”€â”€ Profile avatar + dropdown â”€â”€ */}
             <div className="relative shrink-0">
               <button
                 onClick={() => { setProfileOpen((s) => !s); setEditingProfile(false); setPwMode(false); setPwError(""); setPwOk(""); }}
                 className="flex items-center gap-2 rounded-xl px-2 py-1 transition"
                 style={{ color: "#4a5568" }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#e8edf3"}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#ffffff"}
                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "transparent"}
                 aria-label="Profile menu"
               >
@@ -420,16 +420,16 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
                   {profile.name.charAt(0).toUpperCase()}
                 </div>
                 <div className="hidden sm:block text-left min-w-0">
-                  <div className="text-xs font-semibold leading-tight truncate max-w-[100px]" style={{ color: "#1a202c" }}>
+                  <div className="text-xs font-semibold leading-tight truncate max-w-[100px]" style={{ color: "#000000" }}>
                     {profile.name}
                   </div>
-                  <div className="text-[10px] leading-tight truncate max-w-[100px]" style={{ color: "#718096" }}>
+                  <div className="text-[10px] leading-tight truncate max-w-[100px]" style={{ color: "#000000" }}>
                     {profile.role}
                   </div>
                 </div>
                 <ChevronDown
                   className="h-3 w-3 hidden sm:block shrink-0 transition-transform"
-                  style={{ transform: profileOpen ? "rotate(180deg)" : "rotate(0deg)", color: "#a0aec0" }}
+                  style={{ transform: profileOpen ? "rotate(180deg)" : "rotate(0deg)", color: "#000000" }}
                 />
               </button>
 
@@ -440,14 +440,14 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
                     className="absolute right-0 top-full mt-2 w-72 rounded-2xl z-50 animate-fade-in overflow-hidden"
                     style={{
                       backgroundColor: "#ffffff",
-                      border: "1px solid #e2e8f0",
+                      border: "1px solid #ffffff",
                       boxShadow: "0 20px 56px rgba(0,0,0,0.16)",
                     }}
                   >
                     {/* Profile header */}
                     <div
                       className="p-4 flex items-center gap-3"
-                      style={{ borderBottom: "1px solid #e2e8f0", background: "linear-gradient(135deg, #0d7377 0%, #14b8a6 100%)" }}
+                      style={{ borderBottom: "1px solid #ffffff", background: "linear-gradient(135deg, #6b5ca5 0%, #6b5ca5 100%)" }}
                     >
                       <div
                         className="h-12 w-12 rounded-full grid place-items-center font-bold text-lg text-white shrink-0"
@@ -463,11 +463,11 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
                     </div>
 
                     {pwMode ? (
-                      /* ── Change Password panel ── */
+                      /* â”€â”€ Change Password panel â”€â”€ */
                       <div className="p-4 space-y-3">
                         <div className="flex items-center gap-2 mb-1">
-                          <ShieldCheck className="h-4 w-4" style={{ color: "#0d7377" }} />
-                          <div className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#718096" }}>Change Password</div>
+                          <ShieldCheck className="h-4 w-4" style={{ color: "#6b5ca5" }} />
+                          <div className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#000000" }}>Change Password</div>
                         </div>
 
                         {pwError && (
@@ -491,9 +491,9 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
                             <input
                               type="password"
                               className="w-full rounded-lg border px-3 py-2 text-sm outline-none transition"
-                              style={{ borderColor: "#cbd5e0", backgroundColor: "#f7fafc", color: "#1a202c", caretColor: "#0d7377", cursor: "text" }}
-                              onFocus={(e) => (e.target.style.borderColor = "#0d7377")}
-                              onBlur={(e)  => (e.target.style.borderColor = "#cbd5e0")}
+                              style={{ borderColor: "#6b5ca5", backgroundColor: "#ffffff", color: "#000000", caretColor: "#6b5ca5", cursor: "text" }}
+                              onFocus={(e) => (e.target.style.borderColor = "#6b5ca5")}
+                              onBlur={(e)  => (e.target.style.borderColor = "#6b5ca5")}
                               placeholder={placeholder}
                               value={pwForm[key]}
                               onChange={(e) => setPwForm((p) => ({ ...p, [key]: e.target.value }))}
@@ -505,7 +505,7 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
                           <button
                             onClick={() => { setPwMode(false); setPwForm({ current: "", next: "", confirm: "" }); setPwError(""); setPwOk(""); }}
                             className="flex-1 rounded-lg py-2 text-xs font-medium"
-                            style={{ backgroundColor: "#e8edf3", color: "#4a5568", border: "none", cursor: "pointer" }}
+                            style={{ backgroundColor: "#ffffff", color: "#4a5568", border: "none", cursor: "pointer" }}
                           >Cancel</button>
                           <button
                             onClick={() => {
@@ -524,13 +524,13 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
                               }
                             }}
                             className="flex-1 rounded-lg py-2 text-xs font-semibold flex items-center justify-center gap-1.5"
-                            style={{ backgroundColor: "#0d7377", color: "#ffffff", border: "none", cursor: "pointer" }}
+                            style={{ backgroundColor: "#000000", color: "#ffffff", border: "none", cursor: "pointer" }}
                           ><Check className="h-3.5 w-3.5" /> Save</button>
                         </div>
                       </div>
                     ) : editingProfile ? (
                       <div className="p-4 space-y-3">
-                        <div className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: "#718096" }}>Edit Profile</div>
+                        <div className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: "#000000" }}>Edit Profile</div>
                         {[
                           { key: "name",  label: "Full Name",  placeholder: "Manager" },
                           { key: "role",  label: "Job Title",  placeholder: "Operations Manager" },
@@ -541,11 +541,11 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
                             <input
                               className="w-full rounded-lg border px-3 py-2 text-sm outline-none transition"
                               style={{
-                                borderColor: "#cbd5e0", backgroundColor: "#f7fafc",
-                                color: "#1a202c", caretColor: "#0d7377", cursor: "text",
+                                borderColor: "#6b5ca5", backgroundColor: "#ffffff",
+                                color: "#000000", caretColor: "#6b5ca5", cursor: "text",
                               }}
-                              onFocus={(e) => (e.target.style.borderColor = "#0d7377")}
-                              onBlur={(e)  => (e.target.style.borderColor = "#cbd5e0")}
+                              onFocus={(e) => (e.target.style.borderColor = "#6b5ca5")}
+                              onBlur={(e)  => (e.target.style.borderColor = "#6b5ca5")}
                               placeholder={placeholder}
                               value={draftProfile[key]}
                               onChange={(e) => setDraftProfile((p) => ({ ...p, [key]: e.target.value }))}
@@ -556,7 +556,7 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
                           <button
                             onClick={() => { setEditingProfile(false); setDraftProfile(profile); }}
                             className="flex-1 rounded-lg py-2 text-xs font-medium transition"
-                            style={{ backgroundColor: "#e8edf3", color: "#4a5568", border: "none", cursor: "pointer" }}
+                            style={{ backgroundColor: "#ffffff", color: "#4a5568", border: "none", cursor: "pointer" }}
                           >Cancel</button>
                           <button
                             onClick={() => {
@@ -568,20 +568,20 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
                               saveProfile(updated); setEditingProfile(false);
                             }}
                             className="flex-1 rounded-lg py-2 text-xs font-semibold flex items-center justify-center gap-1.5 transition"
-                            style={{ backgroundColor: "#0d7377", color: "#ffffff", border: "none", cursor: "pointer" }}
+                            style={{ backgroundColor: "#000000", color: "#ffffff", border: "none", cursor: "pointer" }}
                           ><Check className="h-3.5 w-3.5" /> Save</button>
                         </div>
                       </div>
                     ) : (
                       <div className="py-2">
                         {[{
-                          icon: <User className="h-4 w-4" style={{ color: "#0d7377" }} />,
+                          icon: <User className="h-4 w-4" style={{ color: "#6b5ca5" }} />,
                           iconBg: "#e8f5e9",
                           label: "Edit Profile",
                           sub: "Update name, role & email",
                           onClick: () => { setEditingProfile(true); setDraftProfile(profile); },
                         }, {
-                          icon: <KeyRound className="h-4 w-4" style={{ color: "#d97706" }} />,
+                          icon: <KeyRound className="h-4 w-4" style={{ color: "#000000" }} />,
                           iconBg: "#fffbeb",
                           label: "Change Password",
                           sub: "Update your credentials",
@@ -591,31 +591,31 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
                             onClick={item.onClick}
                             className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-left"
                             style={{ backgroundColor: "transparent", border: "none", cursor: "pointer" }}
-                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#f7fafc"}
+                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "#ffffff"}
                             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "transparent"}
                           >
                             <div className="h-8 w-8 rounded-lg grid place-items-center shrink-0" style={{ backgroundColor: item.iconBg }}>{item.icon}</div>
                             <div className="flex-1 min-w-0">
-                              <div className="font-medium text-sm" style={{ color: "#2d3748" }}>{item.label}</div>
-                              <div className="text-xs" style={{ color: "#718096" }}>{item.sub}</div>
+                              <div className="font-medium text-sm" style={{ color: "#000000" }}>{item.label}</div>
+                              <div className="text-xs" style={{ color: "#000000" }}>{item.sub}</div>
                             </div>
-                            <ChevronRight className="h-4 w-4 shrink-0" style={{ color: "#a0aec0" }} />
+                            <ChevronRight className="h-4 w-4 shrink-0" style={{ color: "#000000" }} />
                           </button>
                         ))}
 
-                        <div style={{ borderTop: "1px solid #f0f4f8", margin: "6px 16px" }} />
+                        <div style={{ borderTop: "1px solid #a0aecd", margin: "6px 16px" }} />
 
                         <div className="px-4 py-1">
-                          <div className="text-xs font-semibold uppercase tracking-wider mb-1.5" style={{ color: "#a0aec0" }}>Account</div>
+                          <div className="text-xs font-semibold uppercase tracking-wider mb-1.5" style={{ color: "#000000" }}>Account</div>
                           {[{ label: "Name", value: profile.name }, { label: "Role", value: profile.role }, { label: "Email", value: profile.email }].map(({ label, value }) => (
                             <div key={label} className="flex justify-between text-xs py-0.5">
-                              <span style={{ color: "#718096" }}>{label}</span>
-                              <span className="font-medium truncate max-w-[150px]" style={{ color: "#2d3748" }}>{value}</span>
+                              <span style={{ color: "#000000" }}>{label}</span>
+                              <span className="font-medium truncate max-w-[150px]" style={{ color: "#000000" }}>{value}</span>
                             </div>
                           ))}
                         </div>
 
-                        <div style={{ borderTop: "1px solid #f0f4f8", margin: "6px 0" }} />
+                        <div style={{ borderTop: "1px solid #a0aecd", margin: "6px 0" }} />
 
                         <button
                           onClick={() => { setProfileOpen(false); sessionStore.clear(); navigate({ to: "/login" }); }}
@@ -629,7 +629,7 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
                           </div>
                           <div>
                             <div className="font-medium text-sm" style={{ color: "#e53e3e" }}>Sign Out</div>
-                            <div className="text-xs" style={{ color: "#a0aec0" }}>Return to login screen</div>
+                            <div className="text-xs" style={{ color: "#000000" }}>Return to login screen</div>
                           </div>
                         </button>
                       </div>
@@ -641,7 +641,7 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
           </div>
         </header>
 
-        {/* ── Page content ── */}
+        {/* â”€â”€ Page content â”€â”€ */}
         <div
           key={location.pathname}
           className="flex-1 p-4 sm:p-6 lg:p-8 max-w-[1400px] w-full mx-auto animate-fade-in"
@@ -652,3 +652,4 @@ export function DashboardLayout({ children, title, subtitle, lowStockItems = [] 
     </div>
   );
 }
+
